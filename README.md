@@ -11,6 +11,10 @@ Ingests sample NBA datasets in JSON format into the designated S3 bucket
 Establishes an AWS Glue database and generates an external table schema, enabling structured data queries
 Implements Amazon Athena configurations to facilitate SQL-based analysis of the NBA data residing in the S3 bucket
 
+# Architectural Visuals:
+![image](https://github.com/user-attachments/assets/850a60c5-5838-49f2-a163-2d9432b966e6)
+
+
 # Architecture
 ```
 S3 Bucket (Data Storage)
