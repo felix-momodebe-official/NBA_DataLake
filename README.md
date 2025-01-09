@@ -111,19 +111,31 @@ NBA_ENDPOINT=https://api.sportsdata.io/v3/nba/scores/json/Players
 python3 setup_nba_data_lake.py
 ```
 -You should see the resources were successfully created, the sample data was uploaded successfully and the Data Lake Setup Completed
+![image](https://github.com/user-attachments/assets/a6cbf382-2163-4a26-b726-508b026ad601)
+
+
 
 # Step 5: Manually Check For The Resources
 1. In the Search Bar, type S3 and click blue hyper link name
 
--You should see 2 General purpose bucket named "Sports-analytics-data-lake"
+-You should see 2 General purpose bucket named "Sports-analytics-data-lake-container"
+![image](https://github.com/user-attachments/assets/15736787-9c45-4a6d-9ea1-ab59ce058e69)
+
+
 
 -When you click the bucket name you will see 3 objects are in the bucket
+![image](https://github.com/user-attachments/assets/d1ec5127-bc1a-4667-adcd-5a12125278e2)
+
 
 2. Click on raw-data and you will see it contains "nba_player_data.json"
+![image](https://github.com/user-attachments/assets/6b63736b-dc37-4321-9f39-9b482f754fb5)
 
-3. Click the file name and at the top you will see the option to Open the file
+
+4. Click the file name and at the top you will see the option to Open the file
 
 -You'll see a long string of various NBA data
+![image](https://github.com/user-attachments/assets/bc729bf0-48b7-4255-8cee-99f1ef24a6cb)
+
 
 4. Head over to Amazon Athena and you could paste the following sample query:
 ```bash
@@ -135,6 +147,12 @@ WHERE Position = 'PG';
 -Click Run
 -You should see an output if you scroll down under "Query Results"
 
+- Athena Query Output:
+
+![image](https://github.com/user-attachments/assets/2d2428a3-6903-4890-bc2d-00619fa4aa74)
+
+
+
 ### **What We Learned**
 1. Securing AWS services with least privilege IAM policies.
 2. Automating the creation of services with a script.
@@ -145,4 +163,14 @@ WHERE Position = 'PG';
 1. Automate data ingestion with AWS Lambda
 2. Implement a data transformation layer with AWS Glue ETL
 3. Add advanced analytics and visualizations (AWS QuickSight)
+
+### License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
+### Contact
+
+For any questions or inquiries, please reach out to us at: [SuccPinn Cloud & DevOps + AI](https://www.youtube.com/@SuccPinnCloudDevOps)
+
+Happy coding!
 
