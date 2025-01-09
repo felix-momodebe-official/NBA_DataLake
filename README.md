@@ -1,51 +1,82 @@
-# NBADataLake
-This repository contains the setup_nba_data_lake.py script, which automates the creation of a data lake for NBA analytics using AWS services. The script integrates Amazon S3, AWS Glue, and Amazon Athena, and sets up the infrastructure needed to store and query NBA-related data.
+# NBA Data Lake - AWS Analytics Infrastructure
+## Introduction:
+This project automates the deployment of a scalable NBA analytics data lake leveraging AWS infrastructure. 
+The core script (`setup_nba_data_lake.py`) orchestrates the integration between Amazon S3 for storage, AWS Glue for data cataloging, and Amazon Athena for SQL querying capabilities.
 
 # Overview
-The setup_nba_data_lake.py script performs the following actions:
+The setup script (`setup_nba_data_lake.py`) executes a series of automated operations:
 
-Creates an Amazon S3 bucket to store raw and processed data.
-Uploads sample NBA data (JSON format) to the S3 bucket.
-Creates an AWS Glue database and an external table for querying the data.
-Configures Amazon Athena for querying data stored in the S3 bucket.
+Provisions a dedicated Amazon S3 bucket that serves as the primary storage layer for both raw and transformed NBA data
+Ingests sample NBA datasets in JSON format into the designated S3 bucket
+Establishes an AWS Glue database and generates an external table schema, enabling structured data queries
+Implements Amazon Athena configurations to facilitate SQL-based analysis of the NBA data residing in the S3 bucket
+
+# Architecture
+```
+S3 Bucket (Data Storage)
+    ├── Raw Data (JSON)
+    └── Processed Data
+          └── NBA Statistics
+              
+AWS Glue (Data Catalog)
+    ├── Database
+    └── External Table Schema
+
+Amazon Athena
+    └── SQL Query Interface
+```
 
 # Prerequisites
 Before running the script, ensure you have the following:
 
-Go to Sportsdata.io and create a free account
-At the top left, you should see "Developers", if you hover over it you should see "API Resources"
-Click on "Introduction & Testing"
+API Access
 
-Click on "SportsDataIO API Free Trial" and fill out the information & be sure to select NBA for this tutorial
+- Create a free account at Sportsdata.io
+- Navigate to "Developers" → "API Resources" → "Introduction & Testing"
+- Register for "SportsDataIO API Free Trial" (select NBA)
+- Access the Developer Portal via email confirmation link
+- Select NBA from the left navigation panel
+- Locate "Standings" section
+- Find your API key under "Query String Parameters"
+- Save this API key for script configuration
 
-You will get an email and at the bottom it says "Launch Developer Portal"
+AWS Permissions
+Your IAM user/role must have these permissions:
 
-By default it takes you to the NFL, on the left click on NBA
+Amazon S3
+- `s3:CreateBucket`
+- `s3:PutObject`
+- `s3:DeleteBucket`
+- `s3:ListBucket`
 
-Scroll down until you see "Standings"
+AWS Glue
 
-You'll "Query String Parameters", the value in the drop down box is your API key. 
+- `glue:CreateDatabase`
+- `glue:CreateTable`
+- `glue:DeleteDatabase`
+- `glue:DeleteTable`
 
-Copy this string because you will need to paste it later in the script
-
-IAM Role/Permissions: Ensure the user or role running the script has the following permissions:
-
-S3: s3:CreateBucket, s3:PutObject, s3:DeleteBucket, s3:ListBucket
-Glue: glue:CreateDatabase, glue:CreateTable, glue:DeleteDatabase, glue:DeleteTable
-Athena: athena:StartQueryExecution, athena:GetQueryResults
+Amazon Athena
+- `athena:StartQueryExecution`
+- `athena:GetQueryResults`
 
 # START HERE 
-# Step 1: Open CloudShell Console
+# Step 1: Access your AWS Account
 
-1. Go to aws.amazon.com & sign into your account
-
-2. In the top, next to the search bar you will see a square with a >_ inside, click this to open the CloudShell
+1. Sign into your aws console and launch the aws Cloudshell (No additional authentication required)
+OR
+2. Authenticate into your AWS account form any terminal with AWS CLI installed (Athentication required: Credentials, Role, etc)
 
 # Step 2: Create the setup_nba_data_lake.py file
 1. In the CLI (Command Line Interface), type
 ```bash
 nano setup_nba_data_lake.py
 ```
+   OR
+```bash
+vi setup_nba_data_lake.py
+```
+
 
 
 2. In another window, go to [GitHub](https://github.com/alahl1/NBADataLake)
